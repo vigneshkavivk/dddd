@@ -1,0 +1,33 @@
+pipeline {
+  agent {
+    kubernetes {
+      label 'my-agent'
+      yamlFile 'jenkins/kubernetes-pod.yaml'
+    }
+  }
+  tools {
+    docker 'docker1'
+  }
+  environment {
+    DOCKER_IMAGE = 'your-dockerhub-username/your-image-name:latest'
+  }
+  stages {
+    stage('Checkout') {
+      steps {
+        git branch: 'main', url: 'https://github.com/your-repo.git'
+      }
+    }
+    stage('Build Docker Image') {
+      steps {
+        sh 'docker build -t $DOCKER_IMAGE .'
+      }
+    }
+    stage('Push Docker Image') {
+      steps {
+        withDockerRegistry([credentialsId: 'your-docker-credentials']) {
+          sh 'docker push $DOCKER_IMAGE'
+        }
+      }
+    }
+  }
+}
