@@ -3,10 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:react/recommended'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -17,12 +14,6 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'no-console': 'warn',
-    'no-unused-vars': 'warn',
-    'react/prop-types': 'off', // Turn off if you're not using PropTypes
+    'react/prop-types': 'off',
   },
-  settings: {
-    react: {
-      version: 'detect', // Automatically detect the React version
-    },
-  },
-};
+}
