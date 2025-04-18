@@ -1,0 +1,10 @@
+﻿apiVersion: v1
+kind: Pod
+metadata:
+  name: nginxpod
+  namespace: devops-tools
+spec:
+  containers:
+  - image: nginx:latest
+    name: nginxpod
+  serviceAccountName: api-service-account

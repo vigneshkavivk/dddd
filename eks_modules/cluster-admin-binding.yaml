@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: eks-cluster-admin-binding
+subjects:
+  - kind: User
+    name: arn:aws:iam::061051260015:role/eks-cluster-MASA1212
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: eks-cluster-admin
+  apiGroup: rbac.authorization.k8s.io
