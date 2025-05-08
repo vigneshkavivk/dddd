@@ -51,3 +51,8 @@ resource "aws_security_group" "vpc_sg" {
     Name = "vpc-sg"
   }
 }
+resource "aws_ssm_parameter" "insecure_param" {
+  name  = "api_secret_key"
+  type  = "SecureString"
+  value = "dGhpc0lzQVNlY3JldEtleVdpdGhMb25nRW50cm9weQo="  # base64 of high-entropy string
+}
